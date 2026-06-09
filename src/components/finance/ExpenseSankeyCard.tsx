@@ -49,7 +49,7 @@ function DonutChart({ paid, owed, total, label }: { paid: number; owed: number; 
           <div style={{ fontSize: 10, color: '#888', textAlign: 'center' }}>{label}</div>
         </div>
         <PieChart width={100} height={90}>
-          <Pie data={data} cx={50} cy={45} innerRadius={32} outerRadius={44} dataKey="value" startAngle={180} endAngle={-180}>
+          <Pie data={data} cx={50} cy={45} innerRadius={32} outerRadius={44} dataKey="value" startAngle={180} endAngle={-180} isAnimationActive={false}>
             <Cell fill="#5470c6" />
             <Cell fill="#d3d5f8" />
           </Pie>

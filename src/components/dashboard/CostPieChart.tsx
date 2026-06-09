@@ -59,6 +59,7 @@ export default function CostPieChart() {
             dataKey="value"
             labelLine={false}
             label={renderCustomLabel}
+            isAnimationActive={false}
           >
             {costPieData.map((entry, index) => (
               <Cell key={index} fill={entry.color} />

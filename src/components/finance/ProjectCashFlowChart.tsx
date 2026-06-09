@@ -6,26 +6,38 @@ import {
   Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import { cashFlowTimeData } from '@/data/financeData';
-import { DatePicker, Button } from 'antd';
 import { ExpandAltOutlined } from '@ant-design/icons';
-import dayjs from 'dayjs';
+
+const YEARS = [2024, 2025, 2026, 2027];
 
 export default function ProjectCashFlowChart() {
-  const [year, setYear] = useState(dayjs('2026'));
+  const [year, setYear] = useState(2026);
 
   return (
     <div style={{ background: '#fff', borderRadius: 8, padding: '14px 16px', height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <h6 style={{ margin: 0, fontSize: 15, fontWeight: 500, color: '#535353' }}>Dòng tiền dự án</h6>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <DatePicker
-            picker="year"
-            size="small"
+          <select
             value={year}
-            onChange={(v) => v && setYear(v)}
-            style={{ width: 90 }}
-            allowClear={false}
-          />
+            onChange={(e) => setYear(Number(e.target.value))}
+            style={{
+              width: 90,
+              height: 24,
+              fontSize: 12,
+              border: '1px solid #d9d9d9',
+              borderRadius: 4,
+              padding: '0 6px',
+              color: '#333',
+              background: '#fff',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
+          >
+            {YEARS.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
           <ExpandAltOutlined style={{ color: '#999', cursor: 'pointer' }} />
         </div>
       </div>
@@ -40,14 +52,14 @@ export default function ProjectCashFlowChart() {
             <YAxis tick={{ fontSize: 9, fill: '#999' }} />
             <Tooltip contentStyle={{ fontSize: 11, borderRadius: 6 }} />
             <Legend iconSize={8} wrapperStyle={{ fontSize: 10 }} />
-            <Bar dataKey="thu" name="Giá trị thu" fill="#3D9760" opacity={0.8} barSize={10} />
-            <Bar dataKey="chi" name="Giá trị chi" fill="#E85347" opacity={0.8} barSize={10} />
+            <Bar dataKey="thu" name="Giá trị thu" fill="#3D9760" opacity={0.8} barSize={10} isAnimationActive={false} />
+            <Bar dataKey="chi" name="Giá trị chi" fill="#E85347" opacity={0.8} barSize={10} isAnimationActive={false} />
             <Line type="monotone" dataKey="luyKeThu" name="Lũy kế thu" stroke="#3D9760"
-              strokeWidth={1.5} strokeDasharray="5 3" dot={false} />
+              strokeWidth={1.5} strokeDasharray="5 3" dot={false} isAnimationActive={false} />
             <Line type="monotone" dataKey="luyKeChi" name="Lũy kế chi" stroke="#E85347"
-              strokeWidth={1.5} strokeDasharray="5 3" dot={false} />
+              strokeWidth={1.5} strokeDasharray="5 3" dot={false} isAnimationActive={false} />
             <Line type="monotone" dataKey="soDu" name="Số dư" stroke="#5470c6"
-              strokeWidth={1.5} strokeDasharray="2 2" dot={{ r: 2 }} />
+              strokeWidth={1.5} strokeDasharray="2 2" dot={{ r: 2 }} isAnimationActive={false} />
           </ComposedChart>
         </ResponsiveContainer>
       </div>

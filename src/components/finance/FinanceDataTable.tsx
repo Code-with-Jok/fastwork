@@ -25,22 +25,22 @@ const columns: ColumnsType<Row> = [
     ),
   },
   {
-    title: 'Giá trị hợp đồng', dataIndex: 'contract', align: 'right' as const,
+    title: 'Giá trị hợp đồng', dataIndex: 'contract', align: 'right' as const, width: 160,
     sorter: (a: Row, b: Row) => a.contract - b.contract,
     render: (v: number) => <span style={{ fontSize: 13 }}>{fmtNum(v)}</span>,
   },
   {
-    title: 'Đề nghị thanh toán', dataIndex: 'request', align: 'right' as const,
+    title: 'Đề nghị thanh toán', dataIndex: 'request', align: 'right' as const, width: 160,
     sorter: (a: Row, b: Row) => a.request - b.request,
     render: (v: number) => <span style={{ fontSize: 13 }}>{fmtNum(v)}</span>,
   },
   {
-    title: 'Tổng chi phí thực tế', dataIndex: 'actualCost', align: 'right' as const,
+    title: 'Tổng chi phí thực tế', dataIndex: 'actualCost', align: 'right' as const, width: 175,
     sorter: (a: Row, b: Row) => a.actualCost - b.actualCost,
     render: (v: number) => <span style={{ fontSize: 13 }}>{fmtNum(v)}</span>,
   },
   {
-    title: 'Tổng chi phí đã trả', dataIndex: 'paidCost', align: 'right' as const,
+    title: 'Tổng chi phí đã trả', dataIndex: 'paidCost', align: 'right' as const, width: 160,
     sorter: (a: Row, b: Row) => a.paidCost - b.paidCost,
     render: (v: number) => <span style={{ fontSize: 13, color: v > 0 ? '#3D9760' : undefined }}>{fmtNum(v)}</span>,
   },
@@ -55,7 +55,7 @@ export default function FinanceDataTable() {
   };
 
   return (
-    <div style={{ background: '#fff', borderRadius: 8, padding: '14px 16px' }}>
+    <div style={{ background: '#fff', borderRadius: 8, padding: '14px 16px', overflow: 'hidden' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <h6 style={{ margin: 0, fontSize: 16, fontWeight: 500, color: '#535353' }}>Bảng số liệu</h6>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -69,7 +69,7 @@ export default function FinanceDataTable() {
         rowKey="key"
         size="small"
         pagination={false}
-        scroll={{ x: 'max-content', y: 360 }}
+        scroll={{ x: 840, y: 360 }}
         bordered
         rowClassName={(_, i) => i % 2 !== 0 ? 'row-alt' : ''}
         summary={() => (

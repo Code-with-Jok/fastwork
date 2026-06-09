@@ -25,14 +25,14 @@ export default function CostBarChart() {
           <YAxis tick={{ fontSize: 10, fill: '#999' }} />
           <Tooltip contentStyle={{ fontSize: 11, borderRadius: 6 }} />
           <Legend iconType="square" iconSize={8} wrapperStyle={{ fontSize: 10 }} />
-          <Bar dataKey="laborBudget" name="NC Dự trù" stackId="a" fill="#17B799" />
-          <Bar dataKey="laborActual" name="NC Thực tế" stackId="b" fill="#0B9980" />
-          <Bar dataKey="materialBudget" name="VL Dự trù" stackId="a" fill="#F5A623" />
-          <Bar dataKey="materialActual" name="VL Thực tế" stackId="b" fill="#D4880A" />
-          <Bar dataKey="generalBudget" name="CPC Dự trù" stackId="a" fill="#6BAAFE" />
-          <Bar dataKey="generalActual" name="CPC Thực tế" stackId="b" fill="#3D7CD4" />
-          <Bar dataKey="otherBudget" name="Khác Dự trù" stackId="a" fill="#E85347" radius={[2, 2, 0, 0]} />
-          <Bar dataKey="otherActual" name="Khác Thực tế" stackId="b" fill="#B03530" radius={[2, 2, 0, 0]} />
+          <Bar dataKey="laborBudget" name="NC Dự trù" stackId="a" fill="#17B799" isAnimationActive={false} />
+          <Bar dataKey="laborActual" name="NC Thực tế" stackId="b" fill="#0B9980" isAnimationActive={false} />
+          <Bar dataKey="materialBudget" name="VL Dự trù" stackId="a" fill="#F5A623" isAnimationActive={false} />
+          <Bar dataKey="materialActual" name="VL Thực tế" stackId="b" fill="#D4880A" isAnimationActive={false} />
+          <Bar dataKey="generalBudget" name="CPC Dự trù" stackId="a" fill="#6BAAFE" isAnimationActive={false} />
+          <Bar dataKey="generalActual" name="CPC Thực tế" stackId="b" fill="#3D7CD4" isAnimationActive={false} />
+          <Bar dataKey="otherBudget" name="Khác Dự trù" stackId="a" fill="#E85347" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+          <Bar dataKey="otherActual" name="Khác Thực tế" stackId="b" fill="#B03530" radius={[2, 2, 0, 0]} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
     </div>

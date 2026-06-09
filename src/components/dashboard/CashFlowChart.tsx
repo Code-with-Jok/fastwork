@@ -33,8 +33,8 @@ export default function CashFlowChart() {
             contentStyle={{ fontSize: 12, borderRadius: 6 }}
           />
           <Legend iconType="square" iconSize={10} wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="thu" name="Giá trị thu" fill="#3D9760" radius={[2, 2, 0, 0]} />
-          <Bar dataKey="chi" name="Giá trị chi" fill="#E85347" radius={[2, 2, 0, 0]} />
+          <Bar dataKey="thu" name="Giá trị thu" fill="#3D9760" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+          <Bar dataKey="chi" name="Giá trị chi" fill="#E85347" radius={[2, 2, 0, 0]} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
     </div>

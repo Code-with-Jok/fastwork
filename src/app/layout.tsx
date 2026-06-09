@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import AntdProvider from "@/components/AntdProvider";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${roboto.variable} h-full`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <AntdProvider>{children}</AntdProvider>
+      </body>
     </html>
   );
 }
