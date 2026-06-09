@@ -25,7 +25,7 @@ interface SidebarProps {
 const menuItems = [
   { key: 'dashboard', icon: <DashboardOutlined />, label: 'Tổng quan', href: '/' },
   { key: 'finance', icon: <DollarOutlined />, label: 'Theo dõi tài chính', href: '/insight/finance' },
-  { key: 'contract', icon: <FileTextOutlined />, label: 'Theo dõi HĐ nhận thầu', href: '#' },
+  { key: 'contract', icon: <FileTextOutlined />, label: 'Theo dõi HĐ nhận thầu', href: '/insight/contract' },
   { key: 'material', icon: <DropboxOutlined />, label: 'Cung ứng vật tư', href: '#' },
   { key: 'progress', icon: <ProjectOutlined />, label: 'Tiến độ thi công', href: '#' },
   { key: 'photos', icon: <FileImageOutlined />, label: 'Hình ảnh thi công', href: '#' },
