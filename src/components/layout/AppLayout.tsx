@@ -13,13 +13,19 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children, activeMenu = 'dashboard', pageTitle }: AppLayoutProps) {
   const [collapsed, setCollapsed] = useState(false);
-  const sidebarWidth = collapsed ? 64 : 220;
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const sidebarWidth = sidebarOpen ? (collapsed ? 64 : 220) : 0;
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#F5F6FA' }}>
-      <Sidebar collapsed={collapsed} onCollapse={setCollapsed} activeKey={activeMenu} />
+      <Sidebar collapsed={collapsed} onCollapse={setCollapsed} activeKey={activeMenu} open={sidebarOpen} />
       <Layout style={{ marginLeft: sidebarWidth, transition: 'margin-left 0.2s' }}>
-        <Header sidebarWidth={sidebarWidth} pageTitle={pageTitle} />
+        <Header
+          sidebarWidth={sidebarWidth}
+          pageTitle={pageTitle}
+          sidebarOpen={sidebarOpen}
+          onToggleSidebar={() => setSidebarOpen((prev) => !prev)}
+        />
         <Layout.Content style={{
           marginTop: 65,
           padding: '20px',

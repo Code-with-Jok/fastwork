@@ -20,7 +20,6 @@ export default function SemiGauge({ value, label, size = 120 }: SemiGaugeProps) 
 
   // Arc from 180deg to 0deg (half circle)
   const startAngle = Math.PI;
-  const endAngle = 0;
   const totalAngle = Math.PI;
 
   const describeArc = (pctFill: number) => {
@@ -29,8 +28,8 @@ export default function SemiGauge({ value, label, size = 120 }: SemiGaugeProps) 
     const y1 = cy + r * Math.sin(startAngle) * -1;
     const x2 = cx + r * Math.cos(angle);
     const y2 = cy + r * Math.sin(angle) * -1;
-    const largeArc = pctFill > 0.5 ? 1 : 0;
-    return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
+    // Sweep is always <= 180deg (pctFill in [0,1]), so always the minor arc.
+    return `M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}`;
   };
 
   const trackPath = describeArc(1);

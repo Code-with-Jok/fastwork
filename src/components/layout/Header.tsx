@@ -7,14 +7,18 @@ import {
   AppstoreOutlined,
   QuestionCircleOutlined,
   UserOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
 } from '@ant-design/icons';
 
 interface HeaderProps {
   sidebarWidth: number;
   pageTitle?: string;
+  sidebarOpen?: boolean;
+  onToggleSidebar?: () => void;
 }
 
-export default function Header({ sidebarWidth, pageTitle = 'Tổng quan' }: HeaderProps) {
+export default function Header({ sidebarWidth, pageTitle = 'Tổng quan', sidebarOpen = true, onToggleSidebar }: HeaderProps) {
   return (
     <div style={{
       position: 'fixed',
@@ -32,7 +36,18 @@ export default function Header({ sidebarWidth, pageTitle = 'Tổng quan' }: Head
       zIndex: 99,
       transition: 'left 0.2s',
     }}>
-      <div style={{ fontWeight: 600, fontSize: 16, color: '#0B3175' }}>{pageTitle}</div>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onToggleSidebar}
+          aria-label={sidebarOpen ? 'Ẩn menu' : 'Hiện menu'}
+          aria-pressed={sidebarOpen}
+          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent text-lg text-[#0B3175] transition-colors hover:bg-[#F0F4F8]"
+        >
+          {sidebarOpen ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+        </button>
+        <div style={{ fontWeight: 600, fontSize: 16, color: '#0B3175' }}>{pageTitle}</div>
+      </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <QuestionCircleOutlined style={{ fontSize: 22, color: '#17B799', cursor: 'pointer' }} />
         <Badge count={3} size="small">

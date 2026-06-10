@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FastCons - Insight
+
+A Vietnamese construction SaaS dashboard built with [Next.js 16](https://nextjs.org) (App Router), React 19, [Ant Design 6](https://ant.design), [Recharts 3](https://recharts.org), and Tailwind CSS 4.
+
+All data shown is static mock data (Vietnamese construction figures, VND in tỷ/triệu) under `src/data/` — there is no backend/API.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm run start` | Start the production server |
+| `npx tsc --noEmit` | Type-check without emitting |
+| `eslint .` | Lint the project |
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Description |
+| --- | --- |
+| `/` | Tổng quan — main dashboard |
+| `/insight/finance` | Theo dõi tài chính — finance tracking |
+| `/insight/contract` | Theo dõi HĐ nhận thầu — contract tracking |
+| `/insight/material` | Cung ứng vật tư — material supply |
+| `/insight/project` | Tiến độ thi công — project list |
+| `/insight/project/[id]` | Per-project detail (tabbed) |
+| `/insight/gallery` | Hình ảnh thi công — construction photo gallery |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app/` — Next.js App Router pages, one per route above
+- `src/components/layout/` — shared `AppLayout`, `Sidebar`, `Header`
+- `src/components/<feature>/` — cards, charts, and tables grouped by page (`dashboard`, `finance`, `contract`, `material`, `projectprogress`, `gallery`)
+- `src/data/` — static mock data per page
 
-## Deploy on Vercel
+## Development notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project runs **Next.js 16.2.7**, which has breaking changes from 15/14 (async `params`/`searchParams`, `proxy.ts` instead of `middleware.ts`, Turbopack by default, etc.). See `AGENTS.md` and `CLAUDE.md` / `.claude/rules/` for the full set of conventions used in this codebase before making changes.

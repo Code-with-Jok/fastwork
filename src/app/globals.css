@@ -51,6 +51,21 @@ body {
   background: #F5F6FA !important;
 }
 
+.project-card-link {
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.project-card-link:hover {
+  color: #0B3175 !important;
+}
+
+.gallery-thumb-img {
+  transition: transform 0.25s ease;
+}
+.gallery-thumb-img:hover {
+  transform: scale(1.05);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
